@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ukhanyo Foundation - Student Portal</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine.js" defer></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .sidebar {
+            background-color: #1a1a1a;
+            width: 16rem;
+            transition: all 0.3s;
+        }
+        .sidebar-link {
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+            color: #e0e0e0;
+        }
+        .sidebar-link:hover, .sidebar-link.active {
+            background-color: #333333;
+            border-left-color: #4caf50;
+        }
+        .card {
+            border: 1px solid #e0e0e0;
+        }
+        .card-header {
+            background-color: #ffffff;
+            color: #1a1a1a;
+        }
+        .btn-primary {
+            background-color: #4caf50;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body x-data="{ sidebarOpen: false, activeTab: 'dashboard' }">
+    <div class="flex h-screen bg-gray-100">
+        <!-- Sidebar -->
+        <aside :class="{ 'open': sidebarOpen }" class="sidebar fixed inset-y-0 left-0 z-50 w-64 overflow-y-auto lg:relative lg:block">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center">
+                        <img src="/api/placeholder/48/48" alt="Ukhanyo Foundation Logo" class="w-12 h-12 rounded-full mr-3">
+                        <span class="text-xl font-bold text-white">Student Portal</span>
+                    </div>
+                </div>
+                <nav>
+                    <ul class="space-y-2">
+                        <li><a href="#" @click.prevent="activeTab = 'dashboard'" :class="{ 'active': activeTab === 'dashboard' }" class="block py-2 px-4 rounded-lg sidebar-link">Dashboard</a></li>
+                        <li><a href="#" @click.prevent="activeTab = 'courses'" :class="{ 'active': activeTab === 'courses' }" class="block py-2 px-4 rounded-lg sidebar-link">My Courses</a></li>
+                        <li><a href="#" @click.prevent="activeTab = 'assignments'" :class="{ 'active': activeTab === 'assignments' }" class="block py-2 px-4 rounded-lg sidebar-link">Assignments</a></li>
+                        <li><a href="#" @click.prevent="activeTab = 'grades'" :class="{ 'active': activeTab === 'grades' }" class="block py-2 px-4 rounded-lg sidebar-link">Grades</a></li>
+                        <li><a href="#" @click.prevent="activeTab = 'resources'" :class="{ 'active': activeTab === 'resources' }" class="block py-2 px-4 rounded-lg sidebar-link">Resources</a></li>
+                        <li><a href="#" @click.prevent="activeTab = 'profile'" :class="{ 'active': activeTab === 'profile' }" class="block py-2 px-4 rounded-lg sidebar-link">My Profile</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header class="bg-white shadow-sm z-10">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
+                        <div class="flex justify-start lg:w-0 lg:flex-1">
+                            <h1 class="text-2xl font-semibold text-gray-900" x-text="activeTab.charAt(0).toUpperCase() + activeTab.slice(1)">Dashboard</h1>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <span class="text-gray-500">Welcome, John Doe</span>
+                            <img src="/api/placeholder/40/40" alt="Student Avatar" class="w-10 h-10 rounded-full border-2 border-gray-200">
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                    <!-- Dashboard -->
+                    <div x-show="activeTab === 'dashboard'" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="card bg-white p-6 rounded-xl shadow-sm">
+                            <h2 class="card-header text-xl font-semibold mb-4">Current Program</h2>
+                            <p class="text-3xl font-bold text-green-600">Matric Second Chance</p>
+                            <p class="text-sm mt-2">Progress: 65%</p>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                                <div class="bg-green-600 h-2.5 rounded-full" style="width: 65%"></div>
+                            </div>
+                        </div>
+                        <div class="card bg-white p-6 rounded-xl shadow-sm">
+                            <h2 class="card-header text-xl font-semibold mb-4">Upcoming Assignments</h2>
+                            <ul class="space-y-2">
+                                <li class="flex justify-between items-center">
+                                    <span>Math Assignment</span>
+                                    <span class="text-sm text-gray-500">Due: 15 Sep</span>
+                                </li>
+                                <li class="flex justify-between items-center">
+                                    <span>Science Project</span>
+                                    <span class="text-sm text-gray-500">Due: 22 Sep</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card bg-white p-6 rounded-xl shadow-sm">
+                            <h2 class="card-header text-xl font-semibold mb-4">Recent Grades</h2>
+                            <ul class="space-y-2">
+                                <li class="flex justify-between items-center">
+                                    <span>English Essay</span>
+                                    <span class="font-semibold">85%</span>
+                                </li>
+                                <li class="flex justify-between items-center">
+                                    <span>History Quiz</span>
+                                    <span class="font-semibold">92%</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Other Tabs -->
+                    <div x-show="activeTab !== 'dashboard'" class="bg-white p-6 rounded-xl shadow-sm">
+                        <h2 class="text-2xl font-semibold text-gray-800 mb-4" x-text="activeTab.charAt(0).toUpperCase() + activeTab.slice(1)"></h2>
+                        <p class="text-gray-600" x-text="`Detailed information for ${activeTab} will be displayed here.`"></p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
