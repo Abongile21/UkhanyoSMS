@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ukhanyo Foundation - Teacher Portal</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine.js" defer></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .sidebar {
+            background-color: #1a1a1a;
+            width: 16rem;
+            transition: all 0.3s;
+        }
+        .sidebar-link {
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+            color: #e0e0e0;
+        }
+        .sidebar-link:hover, .sidebar-link.active {
+            background-color: #333333;
+            border-left-color: #4caf50;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background-color: #4caf50;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body x-data="{ sidebarOpen: false, activeTab: 'dashboard' }">
+    <div class="flex h-screen bg-gray-100">
+        <!-- Sidebar -->
+        <aside :class="{ 'open': sidebarOpen }" class="sidebar fixed inset-y-0 left-0 z-50 w-64 overflow-y-auto lg:relative lg:block">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center">
+                        <img src="/api/placeholder/48/48" alt="Ukhanyo Foundation Logo" class="w-12 h-12 rounded-full mr-3">
+                        <span class="text-xl font-bold text-white">Teacher Portal</span>
+                    </div>
+                </div>
+                <nav>
+                    <ul class="space-y-2">
+                        <li><a href="#" @click.prevent="activeTab = 'dashboard'" :class="{ 'active': activeTab === 'dashboard' }" class="block py-2 px-4 rounded-lg sidebar-link">Dashboard</a></li>
+                        <li><a href="#" @click.prevent="activeTab = 'classes'" :class="{ 'active': activeTab === 'classes' }" class="block py-2 px-4 rounded-lg sidebar-link">My Classes</a></li>
+                        <li><a href="#" @click.prevent="activeTab = 'grades'" :class="{ 'active': activeTab === 'grades' }" class="block py-2 px-4 rounded-lg sidebar-link">Grade Book</a></li>
+                        <li><a href="#" @click.prevent="activeTab = 'attendance'" :class="{ 'active': activeTab === 'attendance' }" class="block py-2 px-4 rounded-lg sidebar-link">Attendance</a></li>
+                        <li><a href="#" @click.prevent="activeTab = 'assignments'" :class="{ 'active': activeTab === 'assignments' }" class="block py-2 px-4 rounded-lg sidebar-link">Assignments</a></li>
+                        <li><a href="#" @click.prevent="activeTab = 'resources'" :class="{ 'active': activeTab === 'resources' }" class="block py-2 px-4 rounded-lg sidebar-link">Teaching Resources</a></li>
+                        <li><a href="#" @click.prevent="activeTab = 'reports'" :class="{ 'active': activeTab === 'reports' }" class="block py-2 px-4 rounded-lg sidebar-link">Reports</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header class="bg-white shadow-sm z-10">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
+                        <div class="flex justify-start lg:w-0 lg:flex-1">
+                            <h1 class="text-2xl font-semibold text-gray-900" x-text="activeTab.charAt(0).toUpperCase() + activeTab.slice(1)">Dashboard</h1>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <span class="text-gray-500">Welcome, Ms. Johnson</span>
+                            <img src="/api/placeholder/40/40" alt="Teacher Avatar" class="w-10 h-10 rounded-full border-2 border-gray-200">
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                    <!-- Dashboard -->
+                    <div x-show="activeTab === 'dashboard'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="card p-6">
+                            <h2 class="text-xl font-semibold mb-4">Today's Schedule</h2>
+                            <ul class="space-y-2">
+                                <li class="flex justify-between items-center">
+                                    <span>Grade 10 Math</span>
+                                    <span class="text-sm text-gray-500">08:00 - 09:30</span>
+                                </li>
+                                <li class="flex justify-between items-center">
+                                    <span>Grade 11 Physics</span>
+                                    <span class="text-sm text-gray-500">10:00 - 11:30</span>
+                                </li>
+                                <li class="flex justify-between items-center">
+                                    <span>Grade 12 Math</span>
+                                    <span class="text-sm text-gray-500">13:00 - 14:30</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card p-6">
+                            <h2 class="text-xl font-semibold mb-4">Upcoming Assignments</h2>
+                            <ul class="space-y-2">
+                                <li class="flex justify-between items-center">
+                                    <span>Grade 10 Math Quiz</span>
+                                    <span class="text-sm text-gray-500">Due: Sep 15</span>
+                                </li>
+                                <li class="flex justify-between items-center">
+                                    <span>Grade 11 Physics Lab Report</span>
+                                    <span class="text-sm text-gray-500">Due: Sep 18</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card p-6">
+                            <h2 class="text-xl font-semibold mb-4">Recent Activities</h2>
+                            <ul class="space-y-2">
+                                <li class="text-sm">
+                                    <p class="font-semibold">Grade 12 Math Test Graded</p>
+                                    <p class="text-gray-600">25 students, Avg. score: 78%</p>
+                                </li>
+                                <li class="text-sm">
+                                    <p class="font-semibold">New Resource Added</p>
+                                    <p class="text-gray-600">Physics simulation for Grade 11</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- My Classes Tab -->
+                    <div x-show="activeTab === 'classes'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="card p-6">
+                            <h2 class="text-xl font-semibold mb-4">Grade 10 Math</h2>
+                            <p class="text-gray-600 mb-2">Students: 30</p>
+                            <p class="text-gray-600 mb-4">Next class: Today, 08:00 - 09:30</p>
+                            <button class="btn-primary py-2 px-4 rounded-md">View Class Details</button>
+                        </div>
+                        <div class="card p-6">
+                            <h2 class="text-xl font-semibold mb-4">Grade 11 Physics</h2>
+                            <p class="text-gray-600 mb-2">Students: 25</p>
+                            <p class="text-gray-600 mb-4">Next class: Today, 10:00 - 11:30</p>
+                            <button class="btn-primary py-2 px-4 rounded-md">View Class Details</button>
+                        </div>
+                        <div class="card p-6">
+                            <h2 class="text-xl font-semibold mb-4">Grade 12 Math</h2>
+                            <p class="text-gray-600 mb-2">Students: 28</p>
+                            <p class="text-gray-600 mb-4">Next class: Today, 13:00 - 14:30</p>
+                            <button class="btn-primary py-2 px-4 rounded-md">View Class Details</button>
+                        </div>
+                    </div>
+
+                    <!-- Other tabs -->
+                    <div x-show="!['dashboard', 'classes'].includes(activeTab)" class="card p-6">
+                        <p class="text-lg text-gray-600" x-text="`${activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} content will be displayed here.`"></p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
