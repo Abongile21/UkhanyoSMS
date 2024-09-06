@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ukhanyo Foundation - Student Management System</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine.js" defer></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .sidebar {
+            background-color: #1a1a1a; /* Dark background for sidebar */
+            width: 16rem;
+            transition: all 0.3s;
+        }
+        .sidebar-link {
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+            color: #e0e0e0; /* Light text for better contrast */
+        }
+        .sidebar-link:hover, .sidebar-link.active {
+            background-color: #333333; /* Darker background on hover/active */
+            border-left-color: #4caf50; /* Green accent */
+        }
+        .card {
+            border: 1px solid #e0e0e0;
+        }
+        .card-header {
+            background-color: #ffffff;
+            color: #1a1a1a; /* Dark text color */
+        }
+        .card-content {
+            color: #4a4a4a;
+        }
+        .highlight-text {
+            color: #4caf50;
+        }
+        .btn-primary {
+            background-color: #4caf50;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body x-data="{ sidebarOpen: false, activeTab: 'dashboard' }">
+    <div class="flex h-screen bg-gray-100">
+        <!-- Sidebar -->
+        <aside :class="{ 'open': sidebarOpen }" class="sidebar fixed inset-y-0 left-0 z-50 w-64 overflow-y-auto lg:relative lg:block">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center">
+                        <img src="/api/placeholder/48/48" alt="Ukhanyo Foundation Logo" class="w-12 h-12 rounded-full mr-3">
+                        <span class="text-xl font-bold text-white">UKHANYO SMS</span>
+                    </div>
+                </div>
+                <nav>
+                    <ul class="space-y-2">
+                        <li><a href="#" @click.prevent="activeTab = 'dashboard'" :class="{ 'active': activeTab === 'dashboard' }" class="block py-2 px-4 rounded-lg sidebar-link">Dashboard</a></li>
+                        <li><a href="#" @click.prevent="activeTab = 'students'" :class="{ 'active': activeTab === 'students' }" class="block py-2 px-4 rounded-lg sidebar-link">Students</a></li>
+                        <li><a href="#" @click.prevent="activeTab = 'programs'" :class="{ 'active': activeTab === 'programs' }" class="block py-2 px-4 rounded-lg sidebar-link">Programs</a></li>
+                        <li><a href="#" @click.prevent="activeTab = 'courses'" :class="{ 'active': activeTab === 'courses' }" class="block py-2 px-4 rounded-lg sidebar-link">Courses</a></li>
+                        <li><a href="#" @click.prevent="activeTab = 'attendance'" :class="{ 'active': activeTab === 'attendance' }" class="block py-2 px-4 rounded-lg sidebar-link">Attendance</a></li>
+                        <li><a href="#" @click.prevent="activeTab = 'performance'" :class="{ 'active': activeTab === 'performance' }" class="block py-2 px-4 rounded-lg sidebar-link">Performance</a></li>
+                        <li><a href="#" @click.prevent="activeTab = 'mentors'" :class="{ 'active': activeTab === 'mentors' }" class="block py-2 px-4 rounded-lg sidebar-link">Mentors</a></li>
+                        <li><a href="#" @click.prevent="activeTab = 'reports'" :class="{ 'active': activeTab === 'reports' }" class="block py-2 px-4 rounded-lg sidebar-link">Reports</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header class="bg-white shadow-sm z-10">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
+                        <div class="flex justify-start lg:w-0 lg:flex-1">
+                            <h1 class="text-2xl font-semibold text-gray-900" x-text="activeTab.charAt(0).toUpperCase() + activeTab.slice(1)">Dashboard</h1>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <span class="text-gray-500">Welcome, Admin</span>
+                            <img src="/api/placeholder/40/40" alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-gray-200">
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                    <!-- Dashboard content remains the same -->
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
