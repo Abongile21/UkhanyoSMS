@@ -23,12 +23,15 @@ document.getElementById('login').addEventListener('click', function(){
         }
     })
     .then(res => {
+        localStorage.setItem('sms-token', res.token);
         if(res.data === 'teacher'){
             window.location.href = 'teachers.html'
         }
         else if(res.data === 'student'){
             window.location.href = 'student.html'
         }
+
+
         
     })
     .catch(error => {
