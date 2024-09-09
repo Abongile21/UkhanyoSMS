@@ -18,6 +18,8 @@ document.getElementById('login').addEventListener('click', function(){
     .then(response => {
         if(response.status === 200){
             return response.json();
+        }else{
+            alert("invalid credentials");
         }
     })
     .then(res => {
