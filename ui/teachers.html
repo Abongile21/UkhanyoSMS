@@ -46,7 +46,7 @@
             <div class="p-6">
                 <div class="flex items-center justify-between mb-8">
                     <div class="flex items-center">
-                        <img src="/api/placeholder/48/48" alt="Ukhanyo Foundation Logo" class="w-12 h-12 rounded-full mr-3">
+                        <img src="" alt="Ukhanyo Foundation Logo" class="w-12 h-12 rounded-full mr-3">
                         <span class="text-xl font-bold text-white">Teacher Portal</span>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                     <ul class="space-y-2">
                         <li><a href="#" @click.prevent="activeTab = 'dashboard'" :class="{ 'active': activeTab === 'dashboard' }" class="block py-2 px-4 rounded-lg sidebar-link">Dashboard</a></li>
                         <li><a href="#" @click.prevent="activeTab = 'classes'" :class="{ 'active': activeTab === 'classes' }" class="block py-2 px-4 rounded-lg sidebar-link">My Classes</a></li>
-                        <li><a href="#" @click.prevent="activeTab = 'grades'" :class="{ 'active': activeTab === 'grades' }" class="block py-2 px-4 rounded-lg sidebar-link">Grade Book</a></li>
+                        <li><a href="#" @click.prevent="activeTab = 'grades'" :class="{ 'active': activeTab === 'grades' }" class="block py-2 px-4 rounded-lg sidebar-link" id="gradebook">Grade Book</a></li>
                         <li><a href="#" @click.prevent="activeTab = 'attendance'" :class="{ 'active': activeTab === 'attendance' }" class="block py-2 px-4 rounded-lg sidebar-link">Attendance</a></li>
                         <li><a href="#" @click.prevent="activeTab = 'assignments'" :class="{ 'active': activeTab === 'assignments' }" class="block py-2 px-4 rounded-lg sidebar-link">Assignments</a></li>
                         <li><a href="#" @click.prevent="activeTab = 'resources'" :class="{ 'active': activeTab === 'resources' }" class="block py-2 px-4 rounded-lg sidebar-link">Teaching Resources</a></li>
@@ -75,7 +75,7 @@
                         </div>
                         <div class="flex items-center space-x-4">
                             <span class="text-gray-500">Welcome, Ms. Johnson</span>
-                            <img src="/api/placeholder/40/40" alt="Teacher Avatar" class="w-10 h-10 rounded-full border-2 border-gray-200">
+                            <img src="" alt="Teacher Avatar" class="w-10 h-10 rounded-full border-2 border-gray-200">
                         </div>
                     </div>
                 </div>
@@ -161,5 +161,7 @@
             </main>
         </div>
     </div>
+
+    <script src="../js/teacher.js"></script>
 </body>
 </html>
