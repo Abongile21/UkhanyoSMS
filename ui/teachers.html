@@ -140,7 +140,7 @@
                             <button class="btn-primary py-2 px-4 rounded-md">View Class Details</button>
                         </div>
                         <div class="card p-6">
-                            <h2 class="text-xl font-semibold mb-4">Grade 11 Physics</h2>
+                            <h2 class="text-xl font-semibold mb-4" onclick="showMarkModal()">Grade 11 Physics </h2>
                             <p class="text-gray-600 mb-2">Students: 25</p>
                             <p class="text-gray-600 mb-4">Next class: Today, 10:00 - 11:30</p>
                             <button class="btn-primary py-2 px-4 rounded-md">View Class Details</button>
@@ -162,6 +162,7 @@
                                 <tr>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Program</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Grades</th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                                 </tr>
@@ -180,6 +181,25 @@
                             </tbody>
                         </table>
                     </div>
+
+                    <div id="chartModal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center hidden">
+                        <div class="bg-white p-6 rounded-lg max-w-4xl w-full">
+                            <h2 class="text-xl font-semibold mb-4">Student Marks Distribution</h2>
+                
+                            <table class="min-w-full bg-white border">
+                                <thead>
+                                    <tr>
+                                        <th class="px-4 py-2 border">Subject</th>
+                                        <th class="px-4 py-2 border">Marks</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="marksTableBody"></tbody>
+                            </table>
+                
+                            <button class="bg-gray-500 text-white px-4 py-2 rounded mt-4" onclick="closeModal()">Close</button>
+                        </div>
+                    </div>
+                
 
 
                     <!-- Other tabs -->
